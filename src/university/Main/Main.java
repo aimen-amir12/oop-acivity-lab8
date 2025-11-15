@@ -1,4 +1,4 @@
-package university.main;
+package university.Main;
 
 import university.people.*;
 import university.course.*;
