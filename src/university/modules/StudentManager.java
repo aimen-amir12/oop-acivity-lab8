@@ -237,6 +237,22 @@ public class StudentManager {
         System.out.print("Enter Course Code: ");
         String courseCode = scanner.nextLine();
 
+        String checkCourseSQL = "SELECT course_code FROM courses WHERE course_code = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement checkStmt = conn.prepareStatement(checkCourseSQL)) {
+
+            checkStmt.setString(1, courseCode);
+            ResultSet rs = checkStmt.executeQuery();
+
+            if (!rs.next()) {
+                System.out.println(" Course " + courseCode + " does not exist!");
+                return;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error checking course: " + e.getMessage());
+            return;
+        }
         String sql = SQLQueries.INSERT_ENROLLMENT;
 
         try (Connection conn = DatabaseConnection.getConnection();
