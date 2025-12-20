@@ -14,16 +14,19 @@ public class UndergraduateStudent extends Student {
     @Override
     public void register() {
         System.out.println("Undergraduate student registered: " + getName());
+        saveToDatabase();
     }
 
     @Override
     public double calculatePayment() {
-        return getCourseCount() * 20000; // using array count
+        return getCourseCount() * 20000;
     }
 
     @Override
     public void displayDashboard() {
-        System.out.println("UG Dashboard for " + getName());
+        System.out.println("=== UG Dashboard for " + getName() + " ===");
+        System.out.println("Courses: " + getCourseCount());
+        System.out.println("GPA: " + getGpa());
+        System.out.println("Balance: " + getFinancialSummary());
     }
-
 }

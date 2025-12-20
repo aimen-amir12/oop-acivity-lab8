@@ -16,6 +16,11 @@ public abstract class Staff extends Person implements Payable {
         return salary;
     }
 
+    @Override
+    public String getPersonType() {
+        return "Staff";
+    }
+
     protected void updateSalary(double salary) {
         this.salary = salary;
     }
